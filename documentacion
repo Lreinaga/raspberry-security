@@ -1,0 +1,22 @@
+#puertos abiertos iniciales
+- SSH (22/tcp) – requerido
+- CUPS (631/tcp) – solo local
+- rpcbind (111) – revisar necesidad
+- mDNS (5353/udp) – red local
+  
+#hardening inicial
+- se deshabilitó rpcbind
+- rpcbind.socket deshabilitado
+-puerto 111 UCP/TDP   cerrado
+- Motivo: servicios no utilizados y riesgo de exposicion con RPC
+
+## SSH Hardening
+- PermitRootLogin deshabilitado
+- PasswordAuthentication configurado correctamente
+- Error corregido por opción mal escrita
+- Configuración validada con `sshd -t`
+
+## SSH monitoring
+- Monitoreo en tiempo real de accesos SSH
+- Detección de intentos exitosos y fallidos
+- Uso de journalctl como herramienta Blue Team
